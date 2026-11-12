@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tubagua · USA-K en FerretExpo 2026</title>
-<meta name="description" content="Tubagua / USA-K en FerretExpo 2026, stand 1205, Expocenter Tikal Futura. Catálogo y lista de precios.">
+<meta name="description" content="Tubagua / USA-K en FerretExpo 2026, stand 1205, Expocenter Tikal Futura. Catálogo de productos.">
 <meta name="theme-color" content="#1B5E3B">
 <meta property="og:title" content="Tubagua · USA-K en FerretExpo 2026 · Stand 1205">
-<meta property="og:description" content="Grandes promociones y sorteos en el stand 1205. Catálogo y lista de precios.">
+<meta property="og:description" content="Grandes promociones y sorteos en el stand 1205.">
 <meta property="og:image" content="img/flyer.jpg">
 <link rel="preload" as="image" href="img/flyer.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,9 +73,8 @@
   /* ---------- Botones ---------- */
   .acciones { padding: 16px 0 8px; }
   .botones { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (max-width: 759px) { #btn-cat { grid-column: 1 / -1; } }
   @media (min-width: 760px) { .botones { grid-template-columns: repeat(3, 1fr); } }
-  /* Sin catálogo: "Lista de precios" ocupa toda la fila en móvil */
-  @media (max-width: 759px) { .botones #btn-cat[hidden] + .btn { grid-column: 1 / -1; } }
   .btn {
     display: flex; align-items: center; justify-content: center; gap: 8px;
     min-height: 52px; padding: 10px 12px; border-radius: 12px; border: 0; cursor: pointer;
@@ -109,46 +108,6 @@
   .visor-ctrl { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; }
   .visor-ctrl .btn { min-height: 44px; padding: 8px 16px; }
   .visor-ctrl .cont { font-weight: 700; color: var(--texto-2); min-width: 80px; text-align: center; }
-
-  /* ---------- Lista de precios ---------- */
-  .fecha { display: inline-block; background: #fff6d6; border: 1px solid #ecd98a; color: #6b5300; border-radius: 8px; padding: 4px 10px; font-size: .88rem; font-weight: 700; margin-bottom: 14px; }
-  .buscador { position: sticky; top: 0; z-index: 5; background: var(--fondo); padding: 10px 0; }
-  .campo { position: relative; }
-  .campo svg { position: absolute; left: 14px; top: 50%; translate: 0 -50%; width: 20px; height: 20px; color: var(--texto-2); pointer-events: none; }
-  #q {
-    width: 100%; font: inherit; font-size: 16px; font-weight: 600; padding: 14px 44px 14px 44px;
-    border: 2px solid var(--borde); border-radius: 12px; background: #fff; color: var(--texto);
-  }
-  #q:focus { border-color: var(--verde); }
-  #limpiar { position: absolute; right: 6px; top: 50%; translate: 0 -50%; border: 0; background: transparent; font-size: 22px; line-height: 1; padding: 8px 10px; cursor: pointer; color: var(--texto-2); display: none; }
-  .filtros { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
-  .filtros select { font: inherit; font-size: 15px; font-weight: 600; padding: 10px; border: 2px solid var(--borde); border-radius: 10px; background: #fff; color: var(--texto); min-width: 0; }
-  .marcas { display: flex; gap: 6px; overflow-x: auto; padding: 8px 0 2px; scrollbar-width: none; }
-  .marcas::-webkit-scrollbar { display: none; }
-  .chip { flex: 0 0 auto; border: 2px solid var(--verde); background: #fff; color: var(--verde); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: .85rem; font-weight: 800; cursor: pointer; }
-  .chip[aria-pressed="true"] { background: var(--verde); color: #fff; }
-  .chip.usak { border-color: #111; }
-  .chip.usak[aria-pressed="false"] { background: #a5d58a; color: #111; }
-  .resumen { font-size: .9rem; color: var(--texto-2); margin: 8px 0 4px; font-weight: 600; }
-
-  .lista { display: grid; gap: 10px; margin-top: 6px; }
-  @media (min-width: 700px) { .lista { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1000px) { .lista { grid-template-columns: repeat(3, 1fr); } }
-  .card { background: #fff; border-radius: 12px; box-shadow: var(--sombra); padding: 12px 12px 10px; display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; border-left: 5px solid var(--lima); }
-  .card.usak { border-left-color: var(--verde); }
-  .card .prod { grid-column: 1 / -1; font-weight: 800; font-size: .92rem; line-height: 1.25; color: var(--texto); }
-  .card .var { grid-column: 1 / -1; font-size: .8rem; font-weight: 700; color: var(--azulado); }
-  .card .med { font-weight: 800; font-size: 1.05rem; color: var(--verde); }
-  .card .precio { font-weight: 900; font-style: italic; font-size: 1.3rem; color: var(--verde); text-align: right; white-space: nowrap; align-self: end; }
-  .card .meta { font-size: .78rem; color: var(--texto-2); font-weight: 600; }
-  .card .meta .cod { font-family: ui-monospace, Consolas, monospace; font-weight: 700; color: var(--texto); }
-  .card .meta .mk { font-weight: 800; color: var(--verde); }
-  .card .pie { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; }
-  .card .desc { font-size: .76rem; font-weight: 700; color: #6b5300; background: #fff6d6; border-radius: 6px; padding: 3px 8px; }
-  .card .cotizar { margin-left: auto; min-height: 38px; padding: 6px 14px; font-size: .88rem; background: #1f9d55; border-radius: 10px; }
-  mark { background: #e3f3cf; color: inherit; border-radius: 3px; padding: 0 1px; }
-  .vacio { text-align: center; padding: 30px 16px; color: var(--texto-2); background: #fff; border-radius: 12px; }
-  #mas { margin: 14px auto 0; display: none; }
 
   footer { margin-top: 40px; background: var(--verde-osc); color: #dfeee3; padding: 28px 0 90px; font-size: .9rem; }
   footer b { color: #fff; }
@@ -191,10 +150,8 @@
 <!-- 3. BOTONES -->
 <nav class="acciones wrap" aria-label="Acciones">
   <div class="botones">
-    <a class="btn" href="#catalogo" id="btn-cat" hidden>
+    <a class="btn lima" href="#catalogo" id="btn-cat">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5a1.5 1.5 0 0 0 0 3H20v-2h0v2H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>Catálogo</a>
-    <a class="btn lima" href="#precios">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 11.6 12.4 2.6A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7c0 .6.2 1.1.6 1.4l9 9a2 2 0 0 0 2.8 0l7-7a2 2 0 0 0 0-2.8zM6.5 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>Lista de precios</a>
     <a class="btn wa" id="btn-wa" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3z"/></svg>WhatsApp</a>
     <a class="btn azulado" id="btn-tel" href="#">
@@ -208,13 +165,13 @@
 </nav>
 
 <!-- 4. CATÁLOGO -->
-<section class="bloque wrap" id="catalogo" aria-labelledby="t-cat" hidden>
+<section class="bloque wrap" id="catalogo" aria-labelledby="t-cat">
   <h2 id="t-cat">Catálogo</h2>
   <p class="sub">Hojee nuestro catálogo de productos USA-K.</p>
   <div class="visor" id="visor">
     <div class="pronto" id="cat-pronto">
       <div class="titulo">Catálogo disponible pronto</div>
-      <p>Mientras tanto, consulte la lista de precios o escríbanos por WhatsApp.</p>
+      <p>Mientras tanto, escríbanos por WhatsApp o visítenos en el stand 1205.</p>
     </div>
   </div>
   <div class="visor-ctrl" id="visor-ctrl" hidden>
@@ -225,31 +182,6 @@
   </div>
 </section>
 
-<!-- 5. LISTA DE PRECIOS -->
-<section class="bloque wrap" id="precios" aria-labelledby="t-precios">
-  <h2 id="t-precios">Lista de precios</h2>
-  <div class="fecha" id="fecha">Precios sujetos a cambio</div>
-  <div class="buscador">
-    <div class="campo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <label for="q" class="sr">Buscar producto, código o medida</label>
-      <input id="q" type="search" inputmode="search" autocomplete="off" enterkeyhint="search"
-             placeholder="Buscar: abrazadera, A-17104, 1/2&quot;…">
-      <button id="limpiar" type="button" aria-label="Borrar búsqueda">×</button>
-    </div>
-    <div class="filtros">
-      <label class="sr" for="f-cat">Categoría</label>
-      <select id="f-cat"><option value="">Todas las categorías</option></select>
-      <label class="sr" for="f-uni">Presentación</label>
-      <select id="f-uni"><option value="">Toda presentación</option></select>
-    </div>
-    <div class="marcas" id="marcas" role="group" aria-label="Filtrar por marca"></div>
-  </div>
-  <p class="resumen" id="resumen" aria-live="polite">Cargando lista…</p>
-  <div class="lista" id="lista"></div>
-  <button class="btn claro" id="mas" type="button">Ver más productos</button>
-</section>
-
 <!-- 6. FOOTER -->
 <footer>
   <div class="wrap">
@@ -257,7 +189,6 @@
     <div>FerretExpo 2026 · Stand 1205 · Expocenter Tikal Futura, Ciudad de Guatemala</div>
     <div>Jue 12 a Sáb 14: 10:00–20:00 · Dom 15: 10:00–19:00</div>
     <div>Llamadas y WhatsApp: <a href="tel:+50231238569">+502 3123 8569</a></div>
-    <div id="pie-fecha">Precios en quetzales, sujetos a cambio sin previo aviso.</div>
   </div>
 </footer>
 
@@ -275,7 +206,6 @@ const CONFIG = {
   email: "",                         // opcional, para el contacto (.vcf)
   web: "",                           // opcional
   catalogo: "catalogo.pdf",
-  precios: "precios.json",
 };
 /* ================================================================= */
 
@@ -305,142 +235,6 @@ $("#btn-vcf").addEventListener("click", () => {
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 });
 
-/* ================== LISTA DE PRECIOS ================== */
-const norm = (s) => String(s ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
-  .replace(/[“”″]/g, '"').replace(/\s+/g, " ").trim();
-const fmtQ = (n) => "Q " + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtN = (n) => n.toLocaleString("en-US");
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const titleCase = (s) => s.charAt(0) + s.slice(1).toLowerCase();
-
-const PAGE = 60;
-let ITEMS = [], filtrados = [], mostrados = 0;
-const estado = { q: "", cat: "", uni: "", marca: "" };
-
-function descTexto(it) {
-  const partes = [];
-  if (it.cant_desc_5 != null) partes.push(`${it.pct_desc_5 != null ? it.pct_desc_5 + "%" : "Fardo"} desde ${fmtN(it.cant_desc_5)}`);
-  if (it.cant_desc_10 != null) partes.push(`${it.pct_desc_10 != null ? it.pct_desc_10 + "%" : "Mayoreo"} desde ${fmtN(it.cant_desc_10)}`);
-  return partes.join(" · ");
-}
-
-function resaltar(texto, tokens) {
-  let html = esc(texto);
-  if (!tokens.length) return html;
-  // Resalta sobre texto normalizado manteniendo el original (misma longitud tras quitar acentos)
-  const base = texto.normalize("NFD").replace(/[̀-ͯ]/g, "");
-  if (base.length !== texto.length) return html;
-  const low = base.toLowerCase();
-  const marks = new Array(texto.length).fill(false);
-  for (const t of tokens) {
-    let i = low.indexOf(t);
-    while (i !== -1 && t) { for (let k = i; k < i + t.length; k++) marks[k] = true; i = low.indexOf(t, i + t.length); }
-  }
-  let out = "", open = false;
-  for (let i = 0; i < texto.length; i++) {
-    if (marks[i] && !open) { out += "<mark>"; open = true; }
-    if (!marks[i] && open) { out += "</mark>"; open = false; }
-    out += esc(texto[i]);
-  }
-  return out + (open ? "</mark>" : "");
-}
-
-function card(it, tokens) {
-  const msg = `Hola, vi su lista en FerretExpo (stand 1205). Quiero cotizar: ${it.codigo} ${it.producto}${it.variante ? " " + it.variante : ""} ${it.medida}`.replace(/\s+/g, " ").trim();
-  const desc = descTexto(it);
-  const usak = it.marca === "USA-K";
-  return `<article class="card${usak ? " usak" : ""}">
-    <div class="prod">${resaltar(it.producto, tokens)}</div>
-    ${it.variante ? `<div class="var">${resaltar(it.variante, tokens)}</div>` : ""}
-    <div>
-      <div class="med">${resaltar(it.medida || "—", tokens)}</div>
-      <div class="meta"><span class="cod">${resaltar(it.codigo, tokens)}</span> · ${esc(titleCase(it.unidad || "Unidad"))} · <span class="mk">${esc(it.marca)}</span></div>
-    </div>
-    <div class="precio">${fmtQ(it.precio)}</div>
-    <div class="pie">
-      ${desc ? `<div class="desc">${desc}</div>` : ""}
-      <a class="btn cotizar" href="${waLink(msg)}" target="_blank" rel="noopener" aria-label="Cotizar ${esc(it.codigo)} por WhatsApp">Cotizar</a>
-    </div>
-  </article>`;
-}
-
-function filtrar() {
-  const tokens = norm(estado.q).split(" ").filter(Boolean);
-  filtrados = ITEMS.filter((it) =>
-    (!estado.cat || it.categoria === estado.cat) &&
-    (!estado.uni || it._uni === estado.uni) &&
-    (!estado.marca || it.marca === estado.marca) &&
-    tokens.every((t) => it._h.includes(t) || it._hc.includes(t.replace(/[\s-]/g, "")))
-  );
-  mostrados = 0;
-  $("#lista").innerHTML = "";
-  pintar(tokens);
-  const n = filtrados.length;
-  $("#resumen").textContent = n === ITEMS.length ? `${fmtN(n)} productos` : `${fmtN(n)} de ${fmtN(ITEMS.length)} productos`;
-  if (!n) $("#lista").innerHTML = `<div class="vacio">No encontramos “${esc(estado.q)}”.<br>Pruebe con otra palabra o <a href="${waLink("Hola, vi su lista en FerretExpo (stand 1205). Busco: " + estado.q)}" target="_blank" rel="noopener">pregúntenos por WhatsApp</a>.</div>`;
-}
-
-function pintar(tokens = norm(estado.q).split(" ").filter(Boolean)) {
-  const lote = filtrados.slice(mostrados, mostrados + PAGE);
-  $("#lista").insertAdjacentHTML("beforeend", lote.map((it) => card(it, tokens)).join(""));
-  mostrados += lote.length;
-  const resto = filtrados.length - mostrados;
-  $("#mas").style.display = resto > 0 ? "flex" : "none";
-  $("#mas").textContent = `Ver más productos (${fmtN(resto)})`;
-}
-
-function opciones(sel, valores) {
-  sel.insertAdjacentHTML("beforeend", valores.map(([v, n]) => `<option value="${esc(v)}">${esc(titleCase(v))} (${n})</option>`).join(""));
-}
-
-function contar(campo) {
-  const m = new Map();
-  ITEMS.forEach((it) => m.set(it[campo], (m.get(it[campo]) || 0) + 1));
-  return [...m.entries()].filter(([v]) => v);
-}
-
-async function cargarPrecios() {
-  try {
-    const r = await fetch(CONFIG.precios, { cache: "no-cache" });
-    const data = await r.json();
-    ITEMS = data.items.map((it) => {
-      const h = norm([it.producto, it.variante, it.codigo, it.medida, it.marca, it.unidad].join(" "));
-      return { ...it, _h: h, _hc: h.replace(/[\s-]/g, ""), _uni: norm(it.unidad || "unidad").toUpperCase() };
-    });
-    if (data.fecha) {
-      $("#fecha").textContent = `Precios al ${data.fecha}, sujetos a cambio`;
-      $("#pie-fecha").textContent = `Precios en quetzales al ${data.fecha}, sujetos a cambio sin previo aviso.`;
-    }
-    opciones($("#f-cat"), contar("categoria").sort((a, b) => a[0].localeCompare(b[0], "es")));
-    opciones($("#f-uni"), contar("_uni").sort((a, b) => b[1] - a[1]));
-    const marcas = contar("marca").sort((a, b) => (b[0] === "USA-K") - (a[0] === "USA-K") || b[1] - a[1]);
-    $("#marcas").innerHTML = `<button type="button" class="chip" data-m="" aria-pressed="true">Todas</button>` +
-      marcas.map(([m]) => `<button type="button" class="chip${m === "USA-K" ? " usak" : ""}" data-m="${esc(m)}" aria-pressed="false">${esc(m)}</button>`).join("");
-    filtrar();
-  } catch (e) {
-    $("#resumen").textContent = "No se pudo cargar la lista de precios. Escríbanos por WhatsApp para cotizar.";
-  }
-}
-
-let tq;
-$("#q").addEventListener("input", (e) => {
-  estado.q = e.target.value;
-  $("#limpiar").style.display = estado.q ? "block" : "none";
-  clearTimeout(tq); tq = setTimeout(filtrar, 80);
-});
-$("#q").addEventListener("keydown", (e) => { if (e.key === "Enter") e.target.blur(); });
-$("#limpiar").addEventListener("click", () => { $("#q").value = ""; estado.q = ""; $("#limpiar").style.display = "none"; filtrar(); $("#q").focus(); });
-$("#f-cat").addEventListener("change", (e) => { estado.cat = e.target.value; filtrar(); });
-$("#f-uni").addEventListener("change", (e) => { estado.uni = e.target.value; filtrar(); });
-$("#marcas").addEventListener("click", (e) => {
-  const b = e.target.closest(".chip"); if (!b) return;
-  estado.marca = b.dataset.m;
-  document.querySelectorAll("#marcas .chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
-  filtrar();
-});
-$("#mas").addEventListener("click", () => pintar());
-cargarPrecios();
-
 /* ================== CATÁLOGO (flipbook) ================== */
 function cargarScript(src) {
   return new Promise((ok, err) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = err; document.head.appendChild(s); });
@@ -449,9 +243,7 @@ function cargarScript(src) {
 async function iniciarCatalogo() {
   let existe = false;
   try { const r = await fetch(CONFIG.catalogo, { method: "HEAD", cache: "no-cache" }); existe = r.ok && !/text\/html/.test(r.headers.get("content-type") || ""); } catch (e) {}
-  if (!existe) return; // sin catalogo.pdf la sección y el botón quedan ocultos
-  $("#catalogo").hidden = false;
-  $("#btn-cat").hidden = false;
+  if (!existe) return; // sin catalogo.pdf se queda el mensaje "Catálogo disponible pronto"
   // El visor pesado se carga solo cuando la sección se acerca a la pantalla
   await new Promise((ok) => {
     const io = new IntersectionObserver((ents) => { if (ents.some((e) => e.isIntersecting)) { io.disconnect(); ok(); } }, { rootMargin: "400px" });
