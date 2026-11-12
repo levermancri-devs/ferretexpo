@@ -74,6 +74,8 @@
   .acciones { padding: 16px 0 8px; }
   .botones { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   @media (min-width: 760px) { .botones { grid-template-columns: repeat(3, 1fr); } }
+  /* Sin catálogo: "Lista de precios" ocupa toda la fila en móvil */
+  @media (max-width: 759px) { .botones #btn-cat[hidden] + .btn { grid-column: 1 / -1; } }
   .btn {
     display: flex; align-items: center; justify-content: center; gap: 8px;
     min-height: 52px; padding: 10px 12px; border-radius: 12px; border: 0; cursor: pointer;
@@ -189,7 +191,7 @@
 <!-- 3. BOTONES -->
 <nav class="acciones wrap" aria-label="Acciones">
   <div class="botones">
-    <a class="btn" href="#catalogo">
+    <a class="btn" href="#catalogo" id="btn-cat" hidden>
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5a1.5 1.5 0 0 0 0 3H20v-2h0v2H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>Catálogo</a>
     <a class="btn lima" href="#precios">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 11.6 12.4 2.6A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7c0 .6.2 1.1.6 1.4l9 9a2 2 0 0 0 2.8 0l7-7a2 2 0 0 0 0-2.8zM6.5 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>Lista de precios</a>
@@ -206,7 +208,7 @@
 </nav>
 
 <!-- 4. CATÁLOGO -->
-<section class="bloque wrap" id="catalogo" aria-labelledby="t-cat">
+<section class="bloque wrap" id="catalogo" aria-labelledby="t-cat" hidden>
   <h2 id="t-cat">Catálogo</h2>
   <p class="sub">Hojee nuestro catálogo de productos USA-K.</p>
   <div class="visor" id="visor">
@@ -447,7 +449,14 @@ function cargarScript(src) {
 async function iniciarCatalogo() {
   let existe = false;
   try { const r = await fetch(CONFIG.catalogo, { method: "HEAD", cache: "no-cache" }); existe = r.ok && !/text\/html/.test(r.headers.get("content-type") || ""); } catch (e) {}
-  if (!existe) return; // se queda el mensaje "Catálogo disponible pronto"
+  if (!existe) return; // sin catalogo.pdf la sección y el botón quedan ocultos
+  $("#catalogo").hidden = false;
+  $("#btn-cat").hidden = false;
+  // El visor pesado se carga solo cuando la sección se acerca a la pantalla
+  await new Promise((ok) => {
+    const io = new IntersectionObserver((ents) => { if (ents.some((e) => e.isIntersecting)) { io.disconnect(); ok(); } }, { rootMargin: "400px" });
+    io.observe($("#catalogo"));
+  });
   try {
     await cargarScript("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");
     await cargarScript("https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js");
@@ -497,9 +506,7 @@ async function iniciarCatalogo() {
   }
 }
 
-// Carga el visor solo cuando la sección se acerca a la pantalla
-const io = new IntersectionObserver((ents) => { if (ents.some((e) => e.isIntersecting)) { io.disconnect(); iniciarCatalogo(); } }, { rootMargin: "400px" });
-io.observe($("#catalogo"));
+iniciarCatalogo();
 </script>
 </body>
 </html>
